@@ -7,6 +7,19 @@ version: 2.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
+    before-script-job:
+        macos:
+            xcode: 14.1.0
+        steps:
+            - checkout
+            - run:
+                name: Check versions and env
+                command: |
+                    cd Source
+                    bundle install
+                    bundle exec fastlane install_plugins
+                    export GYM_DERIVED_DATA_PATH="./DerivedData$CI_JOB_ID"
+            
     one:
         # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
         # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
@@ -36,8 +49,8 @@ jobs:
           - store_test_results:
               path: test_output
           - store_artifacts:
-              path: test_output
-              destination: scan-output
+              path: target/scenarios
+              destination: scenarios
           
     two:
         macos:
