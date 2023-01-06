@@ -12,8 +12,8 @@ jobs:
         # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
         macos:
           xcode: 14.1.0 # Specify the Xcode version to use'
-          environment:
-             WISH_NAME: good morning
+        environment:
+            WISH_NAME: good morning
 
         # Add steps to the job
         # See: https://circleci.com/docs/2.0/configuration-reference/#steps
