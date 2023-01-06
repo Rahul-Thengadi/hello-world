@@ -7,34 +7,49 @@ version: 2.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  build:
-    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
-    macos:
-      xcode: 14.1.0 # Specify the Xcode version to use
+    build:
+        # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
+        # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
+        macos:
+          xcode: 14.1.0 # Specify the Xcode version to use
 
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
-    steps:
-      - checkout
-      - run: pwd
-      - run: echo "A first hello"
-      - run: mkdir -p my_workspace
-      - run: echo "Trying out workspaces" >> my_workspace/echo-output
-      - persist_to_workspace:
-            root: my_workspace
-            paths:
-                - echo-output
-      # - run: pod install # Install CocoaPods dependencies
-      # - run: fastlane scan # Run tests using Fastlane
+        # Add steps to the job
+        # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+        steps:
+          - checkout
+          - run: pwd
+          - run: echo "A first hello"
+          - run: mkdir -p my_workspace
+          - run: echo "Trying out workspaces" >> my_workspace/echo-output
+          - persist_to_workspace:
+                root: my_workspace
+                paths:
+                    - echo-output
+          # - run: pod install # Install CocoaPods dependencies
+          # - run: fastlane scan # Run tests using Fastlane
 
-      # Collect XML test results data to show in the UI, and save the same XML
-      # files under test-results folder in the Artifacts tab
-      - store_test_results:
-          path: test_output
-      - store_artifacts:
-          path: test_output
-          destination: scan-output
+          # Collect XML test results data to show in the UI, and save the same XML
+          # files under test-results folder in the Artifacts tab
+          - store_test_results:
+              path: test_output
+          - store_artifacts:
+              path: test_output
+              destination: scan-output
+          
+    two-job:
+        macos:
+            xcode: 14.1.0
+        steps:
+            - checkout
+            - run: "a more familiar hello"
+            - attach_workspace:
+                at: my_workspace
+            - run: |
+                if [[ $(cat my_workspace/echo-output) == "Trying out workspaces"]]; then
+                    echo "It worked!";
+                else
+                    echo "Nope!"; exit 1
+                fi
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
