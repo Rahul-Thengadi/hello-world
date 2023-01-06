@@ -15,8 +15,8 @@ jobs:
             - run:
                 name: Check versions and env
                 command: |
-                    bundle install
-                    bundle exec fastlane install_plugins
+                    ls -l
+                    
             #cd Source
             # bundle install
             # bundle exec fastlane install_plugins
