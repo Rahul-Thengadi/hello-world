@@ -58,5 +58,7 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build
-      - two-job
+      - two-job:
+            requires:
+                - build
 
