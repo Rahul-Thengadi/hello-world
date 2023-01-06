@@ -15,10 +15,11 @@ jobs:
             - run:
                 name: Check versions and env
                 command: |
-                    cd Source
-                    bundle install
-                    bundle exec fastlane install_plugins
-                    export GYM_DERIVED_DATA_PATH="./DerivedData$CI_JOB_ID"
+                    ls -l
+            #cd Source
+            # bundle install
+            # bundle exec fastlane install_plugins
+            # export GYM_DERIVED_DATA_PATH="./DerivedData$CI_JOB_ID"
             
     one:
         # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
