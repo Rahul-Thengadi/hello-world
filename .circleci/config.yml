@@ -16,7 +16,7 @@ jobs:
                 name: Check versions and env
                 command: |
                     ls -l
-                    cd staff
+                    cd hello-world
                     ls -l
                     
             #cd Source
