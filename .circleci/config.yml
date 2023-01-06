@@ -16,7 +16,7 @@ jobs:
                 name: Check versions and env
                 command: |
                     ls -l
-                    cd distiller
+                    cd staff
                     ls -l
                     
             #cd Source
