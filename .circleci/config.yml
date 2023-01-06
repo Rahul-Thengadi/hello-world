@@ -41,7 +41,7 @@ jobs:
             xcode: 14.1.0
         steps:
             - checkout
-            - run: "a more familiar hello"
+            - run: echo "a more familiar hello"
             - attach_workspace:
                 at: my_workspace
             - run: |
