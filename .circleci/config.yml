@@ -15,7 +15,6 @@ jobs:
             - run:
                 name: Check versions and env
                 command: |
-                    ls -l
                     cd hello-world/hello-world
                     ls -l
                     
