@@ -16,6 +16,8 @@ jobs:
                 name: Check versions and env
                 command: |
                     ls -l
+                    cd distiller
+                    ls -l
                     
             #cd Source
             # bundle install
