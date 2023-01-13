@@ -16,8 +16,7 @@ jobs:
             - run:
                 name: Check versions and env
                 command: |
-                    cd hello-world/hello-world
-                    ls -l
+                    ls -a
                     
             #cd Source
             # bundle install
@@ -74,7 +73,7 @@ jobs:
     test-job:
         macos:
             xcode: 14.1.0
-        working_directory: /Users/distiller/projec
+        working_directory: /Users/distiller/project
         steps:
             - checkout
             - run: bundle install
@@ -87,9 +86,9 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - before-script-job
-      - one-job
-      - two-job:
-            requires:
-                - one-job
-      - test-job
+#      - one-job
+#      - two-job:
+#            requires:
+#                - one-job
+#      - test-job
 
