@@ -10,7 +10,7 @@ jobs:
     before-script-job:
         macos:
             xcode: 14.1.0
-        working_directory: /Users/distiller/project/hello-world
+        working_directory: /Users/distiller/project/hello-world/hello-world
         steps:
             - checkout
             - run:
