@@ -73,6 +73,7 @@ jobs:
     test-job:
         macos:
             xcode: 14.1.0
+        working_directory: /Users/distiller/projec
         steps:
             - checkout
             - run: fastlane tests
