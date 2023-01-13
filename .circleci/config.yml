@@ -76,7 +76,7 @@ jobs:
         working_directory: /Users/distiller/projec
         steps:
             - checkout
-            - run: fastlane tests
+            - run: bundle exec fastlane tests
         
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
