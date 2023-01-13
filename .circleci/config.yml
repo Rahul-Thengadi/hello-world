@@ -23,7 +23,7 @@ jobs:
             # bundle exec fastlane install_plugins
             # export GYM_DERIVED_DATA_PATH="./DerivedData$CI_JOB_ID"
             
-    one:
+    one-job:
         # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
         # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
         macos:
@@ -55,7 +55,7 @@ jobs:
               path: target/scenarios
               destination: scenarios
           
-    two:
+    two-job:
         macos:
             xcode: 14.1.0
         steps:
@@ -69,7 +69,14 @@ jobs:
                 else
                     echo "Nope!"; exit 1
                 fi
-
+   
+   test-job:
+        macos:
+            xcode: 14.1.0
+        steps:
+            - checkout
+            - run: fastlane 
+        
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
@@ -77,8 +84,9 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - before-script-job
-      - one
-      - two:
+      - one-job
+      - two-job:
             requires:
-                - one
+                - one-job
+      - test-job
 
