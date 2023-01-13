@@ -76,6 +76,7 @@ jobs:
         working_directory: /Users/distiller/projec
         steps:
             - checkout
+            - run: bundle install
             - run: bundle exec fastlane tests
         
 # Invoke jobs via workflows
