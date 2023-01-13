@@ -70,12 +70,12 @@ jobs:
                     echo "Nope!"; exit 1
                 fi
    
-   test-job:
+    test-job:
         macos:
             xcode: 14.1.0
         steps:
             - checkout
-            - run: fastlane 
+            - run: fastlane tests
         
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
