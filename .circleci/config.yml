@@ -10,7 +10,7 @@ jobs:
     before-script-job:
         macos:
             xcode: 14.1.0
-        working_directory: /hello-world/hello-world
+        working_directory: ~/project
         steps:
             - checkout
             - run:
