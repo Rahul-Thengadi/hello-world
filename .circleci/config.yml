@@ -73,7 +73,7 @@ jobs:
     test-job:
         macos:
             xcode: 14.1.0
-        working_directory: /Users/distiller/project
+        working_directory: /Users/distiller/project/hello-world/hello-world
         steps:
             - checkout
             - run: bundle install
